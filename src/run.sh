@@ -1,16 +1,8 @@
 echo -e "\n[DEBUG] Creating, enabling and starting the service file tor transparent proxy..."
-if service --status-all | grep -Fq 'tor-router.service'; then    
-    systemctl enable tor-router.service && systemctl start tor-router.service
-else
-    echo -e "[ERROR] Unable to start Tor-Router process, try uninstall and install again."
-fi
+systemctl enable tor-router.service && systemctl start tor-router.service
 
 echo -e "\n[DEBUG] Enabling and restarting the TOR daemon using systemctl..."
-if service --status-all | grep -Fq 'tor'; then    
-    systemctl enable tor && systemctl restart tor  
-else
-    echo -e "[ERROR] Unable to start the TOR service, try uninstall and install again."
-fi
+systemctl enable tor && systemctl restart tor
 
 if [ "$?" == 0 ] ; then
     echo -e "[DEBUG] Checking TOR's connectivity."
