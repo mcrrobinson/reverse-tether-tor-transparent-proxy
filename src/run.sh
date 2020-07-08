@@ -1,8 +1,8 @@
 echo -e "\n[DEBUG] Creating, enabling and starting the service file tor transparent proxy..."
-systemctl enable tor-router.service && systemctl start tor-router.service
+systemctl start tor-router.service
 
 echo -e "\n[DEBUG] Enabling and restarting the TOR daemon using systemctl..."
-systemctl enable tor && systemctl restart tor
+systemctl start tor
 
 if [ "$?" == 0 ] ; then
     echo -e "[DEBUG] Checking TOR's connectivity."
