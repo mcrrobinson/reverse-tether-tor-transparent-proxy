@@ -24,30 +24,10 @@ if command -v tor >/dev/null && command -v systemctl > /dev/null ; then
     cp "$torconfig" "$torconfigbackup"
     echo -e "\nConfiguring the torrc file to use TOR as a transparent proxy..."
     echo -e "\n# Seting up TOR transparent proxy for tor-router\nVirtualAddrNetwork 10.192.0.0/10\nAutomapHostsOnResolve 1\nTransPort 9040\nDNSPort 5353" >> "$torconfig"
-    echo -e "\nCreating, enabling and starting the service file tor transparent proxy..."
     cp "$executablerules" "/usr/bin/"
     chmod +x "/usr/bin/tor-router"
     cp "$servicefile" "/etc/systemd/system/"
-    systemctl enable tor-router.service && systemctl start tor-router.service
-    echo -e "\nEnabling and restarting the TOR daemon using systemctl..."
-    systemctl enable tor && systemctl restart tor
-    if [ "$?" == 0 ] ; then
-      echo -e "Checking if all are working..."
-      if command -v curl >/dev/null ; then
-        curl https://check.torproject.org/ | grep "Congratulations."
-        if [ "$?" == 0 ] ; then
-          echo "Now plug in your phone. Press any key to continue."
-          read press_enter
-          chmod +x files/gnirehtet
-          sudo ./files/gnirehtet run
-          exit
-        fi
-      else
-        echo -e "\nYou haven't curl installed, try opening https://check.torproject.org/ in your browser and look for 'Congratulations.'"
-      fi
-    else
-      echo -e "\nAn error as ocurrer, please open a issue in https://github.com/mcrrobinson/reverse-teher-tor-transparent-proxy/issues including log info and your Linux distribution."
-    fi
+    echo -e "Installation complete, not necessarily successful!"
   fi
 else
   echo -e "Systemd or TOR are not installed, the script dont work."
