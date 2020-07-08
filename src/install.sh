@@ -37,3 +37,6 @@ else
   echo -e "[ERROR] Systemd or TOR are not installed, the script dont work."
   exit
 fi
+
+# When dockerised you want it to have TOR after this install script is done but for
+# testing purposes it's started on runtime.
