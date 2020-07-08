@@ -38,7 +38,8 @@ if command -v tor >/dev/null && command -v systemctl > /dev/null ; then
         if [ "$?" == 0 ] ; then
           echo "Now plug in your phone. Press any key to continue."
           read press_enter
-          sudo ./files/gnirehtet
+          chmod +x files/gnirehtet
+          sudo ./files/gnirehtet run
           exit
         fi
       else
