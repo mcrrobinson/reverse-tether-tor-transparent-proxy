@@ -1,6 +1,6 @@
 #!/bin/sh
-# Script that automate the procces for setting up TOR as a tranparent proxy
-# Autor: Edu4rdSHL @edu4rdshl
+#Install depdencies.
+sudo apt-get install -y systemd tor
 
 #Defining variables
 torconfig="/etc/tor/torrc"
