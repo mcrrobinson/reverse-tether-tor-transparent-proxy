@@ -1,6 +1,6 @@
 #!/bin/sh
 #Install depdencies.
-sudo apt-get install -y systemd tor
+sudo apt-get install -y systemd tor curl
 
 #Defining variables
 torconfig="/etc/tor/torrc"
