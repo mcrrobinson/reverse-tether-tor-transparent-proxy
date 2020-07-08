@@ -36,7 +36,9 @@ if command -v tor >/dev/null && command -v systemctl > /dev/null ; then
       if command -v curl >/dev/null ; then
         curl https://check.torproject.org/ | grep "Congratulations."
         if [ "$?" == 0 ] ; then
-          echo -e "\nAll is OK, from now on all your network traffic is under the TOR Network, look for your IP addres in your browser."
+          echo "Now plug in your phone. Press any key to continue."
+          read press_enter
+          sudo ./files/gnirehtet
           exit
         fi
       else
